@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evera <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: e06 <e06@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:50:39 by evera             #+#    #+#             */
-/*   Updated: 2025/01/03 18:24:26 by evera            ###   ########.fr       */
+/*   Updated: 2025/09/29 20:21:57 by e06              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	size_t			i;
 	int				sign;
