@@ -19,6 +19,8 @@ OBJS_DIR	= objs
 
 # ================================ FILES ==================================== #
 C_FILES		=	ft_atoi.c \
+				ft_atol.c \
+				ft_atoll.c \
 				ft_bzero.c \
 				ft_calloc.c \
 				ft_isalnum.c \
@@ -26,16 +28,8 @@ C_FILES		=	ft_atoi.c \
 				ft_isascii.c \
 				ft_isdigit.c \
 				ft_isprint.c \
+				ft_isspace.c \
 				ft_itoa.c \
-				ft_lstadd_back.c \
-				ft_lstadd_front.c \
-				ft_lstclear.c \
-				ft_lstdelone.c \
-				ft_lstiter.c \
-				ft_lstlast.c \
-				ft_lstmap.c \
-				ft_lstnew.c \
-				ft_lstsize.c \
 				ft_memchr.c \
 				ft_memcmp.c \
 				ft_memcpy.c \
@@ -48,12 +42,10 @@ C_FILES		=	ft_atoi.c \
 				ft_split.c \
 				ft_strchr.c \
 				ft_strdup.c \
-				ft_striteri.c \
 				ft_strjoin.c \
 				ft_strlcat.c \
 				ft_strlcpy.c \
 				ft_strlen.c \
-				ft_strmapi.c \
 				ft_strncmp.c \
 				ft_strnstr.c \
 				ft_strrchr.c \
@@ -71,7 +63,6 @@ C_FILES		=	ft_atoi.c \
 				./ft_printf/ft_putstr.c \
 				./get_next_line/get_next_line.c \
 				./get_next_line/get_next_line_utils.c
-
 
 
 OBJS		= $(patsubst %.c,$(OBJS_DIR)/%.o,$(C_FILES))
@@ -95,7 +86,7 @@ $(NAME): $(OBJS)
 $(OBJS_DIR)/%.o: %.c | $(OBJS_DIR)
 	@mkdir -p $(dir $@)
 	@printf "$(YELLOW)🔨 Compiling $<...$(RESET)\n"
-	@$(COMPILER) $(FLAGS) -c $< -o $@
+	@$(COMPILER) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)

@@ -3,39 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evera <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: e06 <e06@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 16:54:54 by evera             #+#    #+#             */
-/*   Updated: 2025/01/03 18:50:20 by evera            ###   ########.fr       */
+/*   Created: 2025/10/21 15:23:36 by e06               #+#    #+#             */
+/*   Updated: 2025/10/21 15:29:58 by e06              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *str, char const *set)
+char *ft_strtrim(char const *str, char const *set)
 {
-	size_t	i;
-	size_t	j;
-	char	*str_buffer;
+    size_t end;
+    size_t start;
 
-	i = 0;
-	if (!str || !set)
-		return (NULL);
-	while (str[i] != '\0')
-	{
-		if (ft_strchr(set, str[i]) == NULL)
-			break ;
-		i++;
-	}
-	j = ft_strlen(str) - 1;
-	while (j != i)
-	{
-		if (ft_strchr(set, str[j]) == NULL)
-			break ;
-		j--;
-	}
-	str_buffer = ft_substr(str, (unsigned int)i, j - i + 1);
-	if (!str_buffer)
-		return (NULL);
-	return (str_buffer);
+    if (!str || !set)
+        return (NULL);
+    start = 0;
+    end = ft_strlen(str);
+    while (ft_strchr(set, str[start]) && str[start])
+        start++;
+    while (ft_strchr(set, str[end - 1]) && end > start)
+        end--;
+    return (ft_substr(str, start, end - start));
 }

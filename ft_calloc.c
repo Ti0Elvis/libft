@@ -3,28 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evera <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: e06 <e06@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 14:23:11 by evera             #+#    #+#             */
-/*   Updated: 2025/01/02 16:28:39 by evera            ###   ########.fr       */
+/*   Created: 2025/10/20 20:23:32 by e06               #+#    #+#             */
+/*   Updated: 2025/10/21 14:18:05 by e06              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t n_elements, size_t size)
+void *ft_calloc(size_t n, size_t size)
 {
-	void	*array;
+    void *ptr;
 
-	if (n_elements != 0 && size > 4294967295U / n_elements)
-	{
-		return (NULL);
-	}
-	array = malloc(n_elements * size);
-	if (!array)
-	{
-		return (NULL);
-	}
-	ft_bzero(array, n_elements * size);
-	return (array);
+    if (n != 0 && size > SIZE_T_MAX / n)
+        return (NULL);
+    ptr = malloc(n * size);
+    if (!ptr)
+        return (NULL);
+    ft_bzero(ptr, n * size);
+    return (ptr);
 }

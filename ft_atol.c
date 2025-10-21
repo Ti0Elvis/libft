@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: e06 <e06@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 20:53:54 by e06               #+#    #+#             */
-/*   Updated: 2025/10/20 20:54:04 by e06              ###   ########.fr       */
+/*   Created: 2025/10/20 20:16:49 by e06               #+#    #+#             */
+/*   Updated: 2025/10/21 14:24:40 by e06              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *str, int fd)
+long ft_atol(const char *str)
 {
     int i;
+    int sign;
+    long result;
 
     i = 0;
-    while (str[i])
+    sign = 1;
+    result = 0;
+    while (ft_isspace(str[i]))
+        i++;
+    if (str[i] == '-' || str[i] == '+')
     {
-        ft_putchar_fd(str[i], fd);
+        if (str[i] == '-')
+            sign = -1;
+        else
+            sign = 1;
         i++;
     }
+    while (ft_isdigit(str[i]))
+    {
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
+    return (result * sign);
 }
